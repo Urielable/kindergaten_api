@@ -1,1 +1,1 @@
-json.errors @response[:message]
+json.errors @activity_log[:message]

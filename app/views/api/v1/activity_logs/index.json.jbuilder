@@ -1,5 +1,5 @@
 json.activities do
-  json.array! @response do |activity|
+  json.array! @activity_log do |activity|
     json.activity_log_id activity.id
     json.assistant_id activity.assistant_id
     json.baby_id activity.baby_id

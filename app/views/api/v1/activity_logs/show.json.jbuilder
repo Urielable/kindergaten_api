@@ -1,1 +1,1 @@
-json.response @response
+json.response @activity_log

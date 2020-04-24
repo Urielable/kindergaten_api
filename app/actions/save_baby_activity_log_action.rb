@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
 class SaveBabyActivityLogAction
-
   def self.execute(params)
     # TODO: adds attributes for query
     baby = Baby.find_by_id(params[:baby_id])

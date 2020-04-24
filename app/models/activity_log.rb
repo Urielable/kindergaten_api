@@ -12,7 +12,6 @@ class ActivityLog < ApplicationRecord
   validates :activity_id, presence: true
   validates :start_time, presence: true
 
-
   scope :basic, -> {
     select(:id,
       :assistant_id,
