@@ -33,5 +33,13 @@ module Kindergarten
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.time_zone = 'America/Monterrey'
+
+    # config/initializers/locale.rb
+ 
+    # Where the I18n library should search for translation files
+    I18n.load_path += Dir[Rails.root.join('lib', 'locale', '*.{rb,yml}')]
+    I18n.config.available_locales = [:en,:es]
+    I18n.default_locale = :es
   end
 end

@@ -1,0 +1,17 @@
+es:
+  activerecord:
+    errors:
+      models:
+        activity_log:
+          attributes: 
+            activity:
+              required: "La actividad es requerida."
+            activity_id:
+              blank: "La actividad no puede ir en vacía."
+            baby_id:
+              blank: "El id del bebe no puede ir en blanco."
+            assistant:
+              required: "El asistente es requerido."
+            assistant_id:
+              blank: "El asistente no puede ir en blanco."
+  baby_dont_exist: "El id del bebe no existe"
