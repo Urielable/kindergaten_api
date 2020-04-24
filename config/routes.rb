@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       resources :activities, only: :index
       resources :babies, only: :index
       resources :babies do
-        resources :activity_logs, only: :show
+        resources :activity_logs, only: :index
       end
       resources :activity_logs, only: [:create, :update]
     end
