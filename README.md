@@ -166,7 +166,16 @@ curl --request POST \
 Response:
 
 ```json
-TO DO: format response
+{
+  "activity_log": {
+    "activity_log_id": 108,
+    "assistant_id": 5,
+    "baby_id": 1,
+    "comments": null,
+    "start_time": "2018-03-17T11:30:00-06:00",
+    "status": "En progreso"
+  }
+}
 ```
 
 Error response:
@@ -218,7 +227,17 @@ curl --request PUT \
 Response:
 
 ```json
-TO DO: format response 
+{
+  "activity_log": {
+    "activity_log_id": 101,
+    "assistant_id": 5,
+    "baby_id": 1,
+    "comments": "todo chido",
+    "start_time": "2018-03-17T11:30:00-06:00",
+    "stop_time": "2018-03-17T12:30:00-06:00",
+    "status": "Terminada"
+  }
+}
 ```
 
 Error response:
@@ -235,8 +254,8 @@ Error response:
 
 ### TO-DO
 
+- Implement JWT
+- Tests
 - Format response on PUT and POST activity logs.
-- Validate stop time in activity logs.
-- Format dates on iso8601 and YYYY-MM-DD.
 
 
