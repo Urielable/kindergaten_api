@@ -3,6 +3,8 @@ class ActivityLog < ApplicationRecord
   FINISHED = I18n.t 'finished'
   STATUS = [IN_PROGRESS, FINISHED]
 
+  before_save :calculate_duration
+
   belongs_to :baby
   belongs_to :assistant
   belongs_to :activity
@@ -53,5 +55,12 @@ class ActivityLog < ApplicationRecord
   def status
     stop_time.present? ? FINISHED : IN_PROGRESS
   end
+
+  private
+    def calculate_duration
+      if self.stop_time.present?
+        self.duration = ((self.stop_time - self.start_time) / 60).to_i
+      end
+    end
 
 end

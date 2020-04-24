@@ -13,20 +13,20 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password: root_password
-  host: 0.0.0.0
+  username: <%= ENV['KINDERGATEN_APP_DB_USER'] || 'root' %>
+  password: <%= ENV['KINDERGATEN_APP_DB_PASS'] || 'root_password' %>
+  host: <%= ENV['KINDERGATEN_APP_DB_HOST'] || 'localhost' %>
 
 development:
   <<: *default
-  database: kinedu_development
+  database: <%= ENV['KINDERGATEN_APP_DB_DEV'] || 'localhost' %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: kinedu_test
+  database: <%= ENV['KINDERGATEN_APP_DB_TEST'] || 'localhost' %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
