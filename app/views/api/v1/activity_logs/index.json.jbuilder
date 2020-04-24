@@ -6,8 +6,8 @@ json.activities do
     json.comments activity.comments
     json.assistant_name activity.assistant_name
     json.baby_name activity.baby_name
-    json.start_time activity.start_time.utc
-    json.stop_time activity.stop_time.utc if activity.stop_time
+    json.start_time activity.start_time.to_formatted_s(:iso8601)
+    json.stop_time activity.stop_time.to_formatted_s(:iso8601) if activity.stop_time
     json.status activity.status
   end
 end 
