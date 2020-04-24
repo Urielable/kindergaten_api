@@ -20,3 +20,4 @@ es:
   activity_logs_not_found: 'No se encontraron actividades.'
   activity_log_not_found: 'No se encontro la actividad'
   activity_log_unexpected_problem: 'Ocurrio un error con la actualización de la actividad. Intenta nuevamente.'
+  validate_stop_time: 'No puedes terminar antes de la fecha de inicio de la actividad'

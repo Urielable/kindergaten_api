@@ -11,9 +11,13 @@ class UpdateBabyActivityLogAction
       if activity_log
         [activity, true]
       else
-        [{"message": {
-          "activity_log_unexpected_problem": 
-          "#{I18n.t 'activity_log_unexpected_problem'}"} }, false]
+        if activity.errors.messages.empty?
+          [{"message": {
+            "activity_log_unexpected_problem": 
+            "#{I18n.t 'activity_log_unexpected_problem'}"} }, false]
+        else
+          [{"message": activity.errors.messages }, false]
+        end
       end
     else
       [{"message": {"activity_log_not_found": 

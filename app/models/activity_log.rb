@@ -14,6 +14,8 @@ class ActivityLog < ApplicationRecord
   validates :activity_id, presence: true
   validates :start_time, presence: true
 
+  validate :validate_stop_time, on: :update
+
   scope :basic, -> {
     select(:id,
       :assistant_id,
@@ -60,6 +62,14 @@ class ActivityLog < ApplicationRecord
     def calculate_duration
       if self.stop_time.present?
         self.duration = ((self.stop_time - self.start_time) / 60).to_i
+      end
+    end
+
+    def validate_stop_time
+      if self.stop_time.present?
+        if self.stop_time <= self.start_time
+          errors.add(:activity_log, I18n.t('validate_stop_time'))
+        end
       end
     end
 
