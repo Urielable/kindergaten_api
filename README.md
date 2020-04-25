@@ -28,10 +28,12 @@ You can change the next enviroment variables:
 ```
 export KINDERGATEN_APP_KEY=<yourappkey>
 export KINDERGATEN_APP_DB=kinedu_development
-export KINDERGATEN_APP_TEST=kinedu_test
+export KINDERGATEN_APP_DB_TEST=kinedu_test
 export KINDERGATEN_APP_HOST=interfactura_app
-export MYSQL_USER=<your_mysql_user>
-export MYSQL_PASS=<your_pass>
+# For production use
+export KINDERGATEN_APP_DB_PROD=<your_mysql_user>
+export KINDERGATEN_APP_DB_USER=<your_pass>
+export KINDERGATEN_APP_DB_PASS=<your_pass>
 ```
 
 #### Test suite

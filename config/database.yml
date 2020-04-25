@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: myapp_production
-  username: myapp
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  database: <%= ENV['KINDERGATEN_APP_DB_PROD'] || 'localhost' %>
+  username: <%= ENV['KINDERGATEN_APP_DB_USER'] || 'root' %>
+  password: <%= ENV['KINDERGATEN_APP_DB_PASS'] || 'root_password' %>
