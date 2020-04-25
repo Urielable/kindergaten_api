@@ -34,7 +34,13 @@ module Kindergarten
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.time_zone = 'America/Monterrey'
-
+    
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
     # config/initializers/locale.rb
  
     # Where the I18n library should search for translation files
