@@ -45,10 +45,8 @@ test:
 # You can use this database configuration with:
 #
 #   production:
-#     url: <%= ENV['DATABASE_URL'] %>
+#     url: 
 #
 production:
   <<: *default
-  database: <%= ENV['KINDERGATEN_APP_DB_PROD'] || 'localhost' %>
-  username: <%= ENV['KINDERGATEN_APP_DB_USER'] || 'root' %>
-  password: <%= ENV['KINDERGATEN_APP_DB_PASS'] || 'root_password' %>
+  url: <%= ENV['DATABASE_URL'] %>
