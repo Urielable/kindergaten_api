@@ -36,7 +36,7 @@ class ActivityLog < ApplicationRecord
   }
 
   scope :baby_info, -> {
-    select('CONCAT(babies.name, ' ', babies.father_name, ' ', babies.mother_name) as baby_name')
+    select('CONCAT(babies.name, " ", babies.father_name, " ", babies.mother_name) as baby_name')
     .joins(:baby)
   }
 
