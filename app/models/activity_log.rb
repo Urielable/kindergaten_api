@@ -44,14 +44,30 @@ class ActivityLog < ApplicationRecord
     if baby_id && !baby_id.nil? && !baby_id.empty?
       where(baby_id: baby_id)
     end
-  }    
+  }
 
-  def self.activiy_logs_baby baby_id
+  scope :filter_assistant, -> (assistant_id) {
+    if assistant_id && !assistant_id.nil? && !assistant_id.empty?
+      where(assistant_id: assistant_id)
+    end
+  }
+
+  scope :filter_status, -> (status) {
+    if status == FINISHED
+      finished
+    elsif status == IN_PROGRESS
+      in_progress
+    end
+  }
+
+  def self.activiy_logs_baby baby_id, assistant_id, status
     self.basic
     .assistant_info
     .activity_info
     .baby_info
     .filter_baby(baby_id)
+    .filter_assistant(assistant_id)
+    .filter_status(status)
   end
 
   def status

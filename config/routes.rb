@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      namespace :admin do
+        resources :activity_logs, only: [:index]
+      end
       resources :activities, only: :index
       resources :babies, only: :index
       resources :babies do
