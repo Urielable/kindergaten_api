@@ -1,0 +1,1 @@
+json.assistants @assistants

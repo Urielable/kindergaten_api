@@ -4,6 +4,11 @@ Rails.application.routes.draw do
       namespace :admin do
         resources :activity_logs, only: [:index]
       end
+      namespace :catalogs do
+        resources :babies, only: [:index]
+        resources :assistants, only: [:index]
+        resources :activity_status, only: [:index]
+      end
       resources :activities, only: :index
       resources :babies, only: :index
       resources :babies do
