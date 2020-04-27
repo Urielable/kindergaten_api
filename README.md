@@ -16,11 +16,7 @@ Run:
 ```
 bundle install
 ```
-Run server: 
 
-```
-rails s
-```
 #### Configuration
 
 You can change the next enviroment variables:
@@ -30,10 +26,26 @@ export KINDERGATEN_APP_KEY=<yourappkey>
 export KINDERGATEN_APP_DB=kinedu_development
 export KINDERGATEN_APP_DB_TEST=kinedu_test
 export KINDERGATEN_APP_HOST=interfactura_app
-# For production use
-export KINDERGATEN_APP_DB_PROD=<your_mysql_user>
-export KINDERGATEN_APP_DB_USER=<your_pass>
-export KINDERGATEN_APP_DB_PASS=<your_pass>
+```
+
+Create database: 
+
+```
+rake db:create
+```
+
+Connect to database for load data, use file 'demo_2019-04-04.sql'.
+
+Run migrations for create user entities
+
+```
+rake db:migrate
+```
+
+Run server: 
+
+```
+rails s
 ```
 
 #### Test suite
