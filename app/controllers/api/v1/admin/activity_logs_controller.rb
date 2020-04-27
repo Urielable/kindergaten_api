@@ -1,5 +1,6 @@
 class Api::V1::Admin::ActivityLogsController < ApplicationController
-
+  before_action :authenticate_user
+  
   def index
     @activity_log, valid = LoadActivityLogAction.execute(filtering_get_params)
     if valid

@@ -14,6 +14,12 @@ es:
               required: "El asistente es requerido."
             assistant_id:
               blank: "El asistente no puede ir en blanco."
+        user:
+          attributes:
+            password:
+              blank: "El password no puede ir vacío."
+            email:
+              taken: "El correo ya esta registrado."
   in_progress: "En progreso"
   finished: "Terminada"
   baby_dont_exist: "El id del bebe no existe"
