@@ -1,10 +1,11 @@
 class Api::V1::UsersController < ApplicationController
+  before_action :authenticate_user, only: [:show]
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /api/v1/users
   # GET /api/v1/users.json
   def index
-    @api_v1_users = Api::V1::User.all
+    @api_v1_users = User.all
   end
 
   # GET /api/v1/users/1
@@ -15,7 +16,7 @@ class Api::V1::UsersController < ApplicationController
   # POST /api/v1/users
   # POST /api/v1/users.json
   def create
-    @user = Api::V1::User.new(api_v1_user_params)
+    @user = User.new(api_v1_user_params)
 
     if @user.save
       render :show, status: :created, location: @user
@@ -48,6 +49,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def api_v1_user_params
-      params.require(:api_v1_user).permit(:name, :email, :password_digest)
+      params.require(:user).permit(:name, :email, :password, :password_digest)
     end
 end

@@ -1,4 +1,5 @@
 class Api::V1::ActivityLogsController < ApplicationController
+  before_action :authenticate_user
 
   def index
     @activity_log, valid = LoadActivityLogAction.execute(params[:baby_id])
