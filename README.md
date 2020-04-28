@@ -60,6 +60,10 @@ The demo is mount in AWS EC2.
 
 You can view api docs in the [wiki](https://github.com/Urielable/kindergarten_api/wiki).
 
+You can use this insomnia collection [Insomnia collection](https://github.com/Urielable/kindergarten_api/blob/master/Insomnia_2020-04-28.json). 
+
+[Insomnia Rest client page](https://insomnia.rest)
+
 ### TO-DO
 
 - Test suite
