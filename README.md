@@ -1,4 +1,4 @@
-## Kindergaten api
+## Kindergarten api
 
 Kinedu api exercise.
 
