@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Api::V1::ActivitiesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get api_v1_activities_index_url
+    get '/api/v1/activities'
     assert_response :success
   end
 

@@ -19,7 +19,7 @@ class Api::V1::UsersController < ApplicationController
     @user = User.new(api_v1_user_params)
 
     if @user.save
-      render :show, status: :created, location: @user
+      render :show, status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end

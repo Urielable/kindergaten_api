@@ -2,37 +2,30 @@ require 'test_helper'
 
 class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @api_v1_user = api_v1_users(:one)
   end
-
-  test "should get index" do
-    get api_v1_users_url, as: :json
-    assert_response :success
-  end
-
-  test "should create api_v1_user" do
-    assert_difference('Api::V1::User.count') do
-      post api_v1_users_url, params: { api_v1_user: { email: @api_v1_user.email, name: @api_v1_user.name, password_digest: @api_v1_user.password_digest } }, as: :json
-    end
+  
+  test "should create user" do
+    post '/api/v1/users', params: { 
+      user: { 
+        email: 'user_test', 
+        name: 'test@starwars.com', 
+        password: '12345678', 
+        password_digest:'12345678' 
+      } 
+    }, as: :json
 
     assert_response 201
   end
 
-  test "should show api_v1_user" do
-    get api_v1_user_url(@api_v1_user), as: :json
-    assert_response :success
+  test "tokenizer" do
+    post '/api/v1/user_token', params: {
+      auth:{
+        email:"test@starwars.com",
+        password:"12345678"
+      }
+    }
+
+    assert_response 201
   end
 
-  test "should update api_v1_user" do
-    patch api_v1_user_url(@api_v1_user), params: { api_v1_user: { email: @api_v1_user.email, name: @api_v1_user.name, password_digest: @api_v1_user.password_digest } }, as: :json
-    assert_response 200
-  end
-
-  test "should destroy api_v1_user" do
-    assert_difference('Api::V1::User.count', -1) do
-      delete api_v1_user_url(@api_v1_user), as: :json
-    end
-
-    assert_response 204
-  end
 end
