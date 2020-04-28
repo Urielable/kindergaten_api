@@ -10,6 +10,10 @@ Rails.application.routes.draw do
         resources :assistants, only: [:index]
         resources :activity_status, only: [:index]
       end
+      namespace :graphs do
+        resources :activity_durations, only: [:index]
+        resources :baby_activities, only: [:index]
+      end
       resources :users
       resources :activities, only: :index
       resources :babies, only: :index

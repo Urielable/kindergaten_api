@@ -19,7 +19,7 @@ bundle install
 
 #### Configuration
 
-You can change the next enviroment variables:
+You need create the enviroment variables:
 
 ```
 export KINDERGATEN_APP_KEY=<yourappkey>
@@ -28,7 +28,9 @@ export KINDERGATEN_APP_DB_TEST=kinedu_test
 export KINDERGATEN_APP_HOST=interfactura_app
 ```
 
-Create database: 
+Or modify directly teh `database.yml`, you can feel free of use any method.
+
+**Create database:**
 
 ```
 rake db:create
@@ -36,13 +38,13 @@ rake db:create
 
 Connect to database for load data, use file 'demo_2019-04-04.sql'.
 
-Run migrations for create user entities
+Run migrations for create user entities.
 
 ```
 rake db:migrate
 ```
 
-Run server: 
+**Run server:**
 
 ```
 rails s
@@ -57,6 +59,12 @@ rails test
 ```
 
 ## How to use
+
+You can use the live demo [https://api.miss-line.com](https://api.miss-line.com).
+
+The demo is mount in AWS EC2.
+
+You can view api docs in the [wiki](https://github.com/Urielable/kindergaten_api/wiki).
 
 ## Activity Logs
 
@@ -208,6 +216,8 @@ Error response:
 }
 ```
 
+#### Actualizar activity log
+
 Metodo: **PUT**
 
 Endpoint: `api/v1/babies/<baby_id>/activity_logs/<activity_log_id>`
@@ -266,10 +276,10 @@ Error response:
 ```
 
 
+
+
 ### TO-DO
 
-- Implement JWT
 - Tests
-- Format response on PUT and POST activity logs.
 
 

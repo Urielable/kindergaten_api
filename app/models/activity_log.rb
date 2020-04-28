@@ -70,6 +70,12 @@ class ActivityLog < ApplicationRecord
     .filter_status(status)
   end
 
+  def self.series_activiy_logs_baby baby_id
+    self.activity_info
+    .filter_baby(baby_id)
+    .pluck(:duration, 'activities.name')
+  end
+
   def status
     stop_time.present? ? FINISHED : IN_PROGRESS
   end
