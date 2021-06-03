@@ -23,7 +23,7 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: laravel_tags
+          MYSQL_DATABASE: kinedu_test
         ports:
           - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -37,13 +37,13 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Create Database
-      run: bundle exec rake db:create
-    - name: Migrate Database
-      run: bundle exec rake db:migrate
-    - name: Seed Database
-      run: bundle exec rake db:seed
-    - name: Run tests
-      run: bundle exec rake
+    - name: Run Tests
+      run: |
+        sudo service mysql start
+        bundle exec rails db:prepare
+        bundle exec rails test
+      env:
+        DB_PORT: 3306 
+        RAILS_ENV: test
       
     
