@@ -14,7 +14,6 @@ development: &development
 test:
   <<: *development
   username: <%= ENV['KINEDU_APP_DB_USER_TEST'] || 'root' %>
-  password: <%= ENV['KINEDU_APP_DB_PASS'] || 'root_password' %>
   database: <%= ENV['KINEDU_APP_DB_TEST'] || 'kinedu_test' %>
   <% if ENV['CI'] == "RAILS_TEST" %>
   host: 127.0.0.1
