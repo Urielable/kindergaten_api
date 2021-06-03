@@ -22,7 +22,6 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_ROOT_PASSWORD: root_password
-          MYSQL_DATABASE: kinedu_dev
         ports:
           - 3306
         options: >-
@@ -32,6 +31,11 @@ jobs:
           --health-retries=3
     steps:
     - uses: actions/checkout@v2
+    - name: Verify MySQL connection from host
+      run: |
+        sudo apt-get install -y mysql-client libmysqlclient-dev
+        mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot -proot -e "SHOW GRANTS FOR 'root'@'localhost'"
+        mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports[3306] }} -uroot -proot mysql
     - name: Set up Ruby
     # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
     # change this to (see https://github.com/ruby/setup-ruby#versioning):
@@ -46,7 +50,8 @@ jobs:
         bundle exec rails db:prepare
         bundle exec rails test
       env:
-        DB_PORT: 3306 
+        KINEDU_APP_DB_PASS: root_password
+        DB_PORT: ${{ job.services.mysql.ports[3306] }}
         RAILS_ENV: test
         CI: RAILS_TEST
       
