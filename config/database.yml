@@ -15,11 +15,11 @@ test:
   <<: *development
   username: <%= ENV['KINEDU_APP_DB_USER_TEST'] || 'root' %>
   database: <%= ENV['KINEDU_APP_DB_TEST'] || 'kinedu_test' %>
-  <% puts ENV['CI']  %>
-  <% if ENV['CI'] %>
+  <% if ENV['CI'] == "RAILS_TEST" %>
+  <% puts ENV['DB_PORT']  %>
+  <% puts ENV['DB_PORT']  %>
   host: 127.0.0.1
   port: <%= ENV['DB_PORT'] %>
-
   <% end %>
 production:
   <<: *default
