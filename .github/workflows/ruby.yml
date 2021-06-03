@@ -14,9 +14,6 @@ on:
   
 jobs:
   build:
-    env: 
-      KINEDU_APP_KEY: 6925affdedbc4dbb66d4e77c86b640995444d8397d50fe8c0dc80c3982ebef1588b1e0bde169afc4955f3491e8ba10809430cdfc95af43b00d3edb04e51a0217
-      DATABASE_URL: "mysql2://myuser:mypass@mysql/kinedu_test"
     runs-on: ubuntu-latest
     services:
       mysql:
