@@ -25,7 +25,7 @@ test:
   <<: *default
   username: <%= ENV['KINEDU_APP_DB_USER_TEST'] || 'root' %>
   database: <%= ENV['KINEDU_APP_DB_TEST'] || 'kinedu_test' %>
-  <% if ENV['Ruby'] %>
+  <% if ENV['CI'] %>
   host: 127.0.0.1
   port: <%= ENV['DB_PORT'] %>
   <% end %>
