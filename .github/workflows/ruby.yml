@@ -43,5 +43,6 @@ jobs:
       env:
         DB_PORT: 3306 
         RAILS_ENV: test
+        CI: RAILS_TEST
       
     
