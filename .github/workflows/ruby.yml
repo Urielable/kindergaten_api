@@ -6,21 +6,27 @@
 # For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
 
 name: Ruby
-
 on:
   push:
-    branches: [ master ]
+    branches: [ master]
   pull_request:
-    branches: [ master ]
-
+    branches: [ master]
+  
 jobs:
-  test:
-
+  build:
+    env: 
+      KINEDU_APP_KEY: 6925affdedbc4dbb66d4e77c86b640995444d8397d50fe8c0dc80c3982ebef1588b1e0bde169afc4955f3491e8ba10809430cdfc95af43b00d3edb04e51a0217
+      DATABASE_URL: "mysql2://myuser:mypass@mysql/kinedu_test"
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby-version: ['2.6.3']
-
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: laravel_tags
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
@@ -31,5 +37,13 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Create Database
+      run: bundle exec rake db:create
+    - name: Migrate Database
+      run: bundle exec rake db:migrate
+    - name: Seed Database
+      run: bundle exec rake db:seed
     - name: Run tests
       run: bundle exec rake
+      
+    
