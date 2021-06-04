@@ -7,8 +7,8 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
   test "should create user" do
     post '/api/v1/users', params: { 
       user: { 
-        email: 'user_test', 
-        name: 'test@starwars.com', 
+        name: 'user_test', 
+        email: 'test@starwars.com', 
         password: '12345678', 
         password_digest:'12345678' 
       } 
@@ -18,6 +18,7 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "tokenizer" do
+
     post '/api/v1/user_token', params: {
       auth:{
         email:"test@starwars.com",

@@ -2,6 +2,7 @@ default: &default
   adapter: mysql2
   collation: utf8mb4_unicode_ci
   encoding: utf8mb4
+  host: 127.0.0.1
 
 development: &development
   <<: *default
@@ -12,7 +13,7 @@ development: &development
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *development
+  <<: *default
   username: <%= ENV['KINEDU_APP_DB_USER_TEST'] || 'root' %>
   database: <%= ENV['KINEDU_APP_DB_TEST'] || 'kinedu_test' %>
   <% if ENV['CI'] == "RAILS_TEST" %>
